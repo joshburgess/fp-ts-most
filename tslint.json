@@ -1,0 +1,12 @@
+{
+  "extends": "tslint-config-standard",
+  "rules": {
+    "space-before-function-paren": false,
+    "no-use-before-declare": false,
+    "variable-name": false,
+    "quotemark": [true, "single", "jsx-double"],
+    "ter-indent": false,
+    "trailing-comma": true,
+    "promise-function-async": false
+  }
+}
