@@ -39,7 +39,7 @@ const testArray = new NonEmptyArray(1, [2, 3])
 const double = (n: number): number => n * 2
 const triple = (n: number): number => n * 3
 
-describe('@most/types/Stream', () => {
+describe('@most/core:Stream', () => {
   it('of', () => {
     const resultStream = stream.of(1)
 
