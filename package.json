@@ -1,6 +1,6 @@
 {
   "name": "fp-ts-most",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "fp-ts bindings for @most/core",
   "files": [
     "lib"
@@ -13,7 +13,8 @@
     "safety-check": "yarn prettier && yarn lint && yarn test",
     "test": "TS_NODE_CACHE=false mocha -r ts-node/register test/*.ts",
     "clean": "rm -rf lib/*",
-    "build": "yarn clean && tsc"
+    "build": "yarn clean && tsc",
+    "prepare-update": "yarn safety-check && yarn build"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@types/mocha": "2.2.38",
     "@types/node": "7.0.4",
+    "fp-ts-most": "^0.1.2",
     "mocha": "3.2.0",
     "prettier": "^1.14.3",
     "ts-node": "3.2.0",
