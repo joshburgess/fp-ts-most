@@ -11,14 +11,16 @@ import {
   now,
 } from '@most/core'
 
+const EMPTY = empty()
+
 export const URI = '@most/core:Stream'
 
 export type URI = typeof URI
 
 declare module '@most/types' {
   interface Stream<A> {
-    _URI: URI
-    _A: A
+    readonly _URI: URI
+    readonly _A: A
   }
 }
 
@@ -31,14 +33,14 @@ declare module '@most/core/type-definitions/combinator/multicast' {
 
 declare module 'fp-ts/lib/HKT' {
   interface URI2HKT<A> {
-    '@most/core:Stream': Stream<A>
+    readonly '@most/core:Stream': Stream<A>
   }
 }
 
 export const getMonoid = <A = never>(): Monoid<Stream<A>> => {
   return {
     concat: merge,
-    empty: empty(),
+    empty: EMPTY,
   }
 }
 
@@ -50,7 +52,7 @@ const of = <A>(a: A): Stream<A> => now(a)
 const chain = <A, B>(fa: Stream<A>, f: (a: A) => Stream<B>): Stream<B> =>
   _chain(f, fa)
 
-const zero = <A>(): Stream<A> => empty()
+const zero = <A>(): Stream<A> => EMPTY
 
 export const stream: Monad1<URI> & Alternative1<URI> = {
   URI,
