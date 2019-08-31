@@ -1,6 +1,6 @@
 {
   "name": "fp-ts-most",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "fp-ts bindings for @most/core",
   "files": [
     "lib"
@@ -9,12 +9,16 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "lint": "tslint src/**/*.ts test/**/*.ts",
-    "prettier": "prettier \"{src,test}/**/*.ts\"",
+    "prettier": "prettier --list-different \"{src,test}/**/*.ts\"",
+    "prettier-fmt": "prettier --write \"{src,test}/**/*.ts\"",
     "safety-check": "yarn prettier && yarn lint && yarn test",
-    "test": "TS_NODE_CACHE=false mocha -r ts-node/register test/*.ts",
+    "jest": "jest --ci",
+    "test": "yarn prettier && yarn lint && yarn jest && yarn docs",
+    "test-via-mocha": "TS_NODE_CACHE=false mocha -r ts-node/register test/*.ts",
     "clean": "rm -rf lib/*",
     "build": "yarn clean && tsc",
-    "prepare-update": "yarn safety-check && yarn build"
+    "prepublish": "yarn safety-check && yarn build",
+    "docs": "docs-ts"
   },
   "repository": {
     "type": "git",
@@ -28,18 +32,22 @@
   "homepage": "https://github.com/joshburgess/fp-ts-most",
   "dependencies": {
     "@most/core": "^1.0.0",
-    "fp-ts": "^1.0.0"
+    "fp-ts": "^2.0.1"
   },
   "devDependencies": {
     "@types/mocha": "2.2.38",
     "@types/node": "7.0.4",
-    "fp-ts-most": "^0.1.2",
-    "mocha": "3.2.0",
-    "prettier": "^1.14.3",
+    "docs-ts": "^0.1.0",
+    "fp-ts": "^2.0.1",
+    "jest": "^24.8.0",
+    "mocha": "^5.2.0",
+    "prettier": "^1.18.2",
+    "rxjs": "^6.5.2",
+    "ts-jest": "^24.0.2",
     "ts-node": "3.2.0",
-    "tslint": "4.4.2",
-    "tslint-config-standard": "4.0.0",
-    "typescript": "^3.1.3"
+    "tslint": "^5.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.5.3"
   },
   "tags": [
     "fp-ts",

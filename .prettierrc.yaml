@@ -1,4 +1,4 @@
-# .prettierrc or .prettierrc.yaml
+parser: "typescript"
 printWidth: 80
 semi: false
 singleQuote: true
